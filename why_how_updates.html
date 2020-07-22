@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">  
+  
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Build a Python GUI right in your web browser!">
+		<meta name="keywords" content="Python GUI builder, Python GUI maker, Tkinter UI, Tkinter GUI, Tkinter framework, Tkinter window maker, Tkinter GUI builder, Tkinter GUI maker">
+		<link rel="stylesheet" type="text/css" href="css/styles.css" /> 
+		<link rel="stylesheet" href="css/picker.css">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<title>Python-gui-builder.com</title> 
+
+	</head> 
+
+	<body> 
+		<div class="header">
+			<a href="index.html">back</a>
+		</div>
+		<div class="toolHeader">
+			<div type="toolComponent">
+				<h1>How?</h1>
+				<br>How is this page coming to you?  It's hosted in an s3 bucket provided by Amazon Web Services, and using just plain old javascript and html (actually, Vue.js is used for the color-picker, but that's all).
+			</div>
+			
+			<div type="toolComponent">
+				<h1>Why?</h1>
+				<br>Python is a wonderful programming language, but the tools available for building GUIs to go with it are surprisingly sparse.  A few are available for download, of course, but the steps involved in installation can be confusing and prohibitory (especially so if you aren't familiar with terms such as <i>tarballs</i> and/or don't know how to edit your PATH environmental variables).  <br><br>I spent a few years building ugly and clunky user interfaces in Python (and taking hours/days in the process), then, in early 2019, I stumbled into the wonderful world of C# programming, using Microsoft Visual Studio as a development environment.  Using the GUI builder included with Visual Studio, I was able to create complex GUIs (which would have taken hours or days, or just been impossible using Python and Tkinter) in a matter of minutes.
+				<br><br>This page is meant to be a kind of online version of such a GUI builder.  I hope it makes your Python GUI building experience more pleasant, and quicker, than it otherwise might be.
+			</div>
+				
+			<div type="toolComponent">
+				<h1>Updates</h1>
+				<div class="tab">
+					<b>June 18th 2020:</b><br>
+					Made it impossible to create 2 widgets with the same name (used to throw an error).<br>
+					<br><b>June 17th 2020:</b><br>
+					Changed the layout of tools and tool settings, also made it necessary to input all values before creating widgets (or else the "Use these values" button cannot be clicked).<br>
+					<br><b>June 16th 2020:</b><br>
+					The generated Python code now appears in a text box, pre-formatted.  With the click of a button, you can select it all and copy it to the clipboard, for pasting into your Python console.<br>	
+					<br><b>June 15th 2020:</b><br>
+					Seeing hundreds of visits a day from all over the globe, thank you for using this tool!  Currently debugging as much as possible.  Added icons associated with combo boxes and spinboxes, to make what is displayed in the browser a little more realistic.  Also, added a picture widget, via which *.gif files can be displayed on the form.<br>	
+					<br><b>June 12th 2020:</b><br>
+					Added a Combo box widget, and a spinbox widget.<br>	
+					<br><b>June 10th 2020:</b><br>
+					Added a "Snap to grid" function, which causes widgets to snap into 10x10 pixel areas (easier to align widgets).<br>				
+					<br><b>June 9th 2020:</b><br>
+					Added a Progress Bar widget.<br>
+					<br><b>June 8th 2020:</b><br>
+					Adjusted some of the widget coordinates so that what appears in the web browser is more similar to what is actually displayed when the code is run in Python.<br>
+					<br><b>June 5th 2020:</b><br>
+					Added the ability to select fonts, font-styles, and font-weights.<br>
+					<br><b>June 2nd 2020:</b><br>
+					Added the ability to delete objects after they have been created.<br>	
+				</div>
+			</div>
+		</div>
+
+	</body> 
+</html>

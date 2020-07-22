@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">  
+  
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Build a Python GUI right in your web browser!">
+		<meta name="keywords" content="Python GUI builder, Python GUI maker, Tkinter UI, Tkinter GUI, Tkinter framework, Tkinter window maker, Tkinter GUI builder, Tkinter GUI maker, online python gui builder, python gui builder online, online gui maker, online tkinter builder">
+		<link rel="stylesheet" type="text/css" href="css/styles.css" /> 
+		<link rel="stylesheet" href="css/picker.css">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<title>Python-gui-builder.com</title> 
+
+		<script type="text/javascript" src="js/canvas_0618.js"></script> 
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+	</head> 
+
+	<body> 
+	
+		<div class="header">
+			Make a Python GUI in minutes with this online tool!  Just choose elements from the dropdown box below and draw them on the canvas.  Python 3.7 code for a GUI generated via Tkinter automatically appears the text box.  It can be copy-pasted into your python program! <br><a href="why_how_updates.html">The How and the Why? Plus an update history</a>
+		
+		</div>
+
+		<div class="toolHeader">
+			<div id="toolType" class="tab" type="toolComponent">
+				Type of object:<br>
+				<select name="selector" id="selector" type="selector">
+					<option value="rect" id="mainWindow">Main window</option>
+					<option value="rect" id="textInput">Text input box</option>
+					<option value="rect" id="button">Button</option>
+					<option value="rect" id="label">Label</option>
+					<option value="rect" id="listBox">Listbox</option>
+					<option value="rect" id="radioButtons">Set of radio buttons</option>
+					<option value="rect" id="checkBox">Check box</option>
+					<option value="rect" id="progressBar">Progress bar</option>
+					<option value="rect" id="comboBox">Combo box</option>
+					<option value="rect" id="spinBox">Spinbox</option>
+					<option value="rect" id="picture">Picture</option>
+				</select>
+				<br>
+			</div>
+				
+			<div id="varField" class="tab" type="toolComponent">
+				Name:<br>
+				<input type="general_text" id="textInputName" class="wFilter"><br>
+			</div>
+			
+			<div id="colorField" class="tab" type="toolComponent">
+				Color:<br>
+				<div id="color-picker">
+					<div class="wrapper-dropdown">
+						<span @click="toggleDropdown()" v-html="selector"></span>
+							<ul class="dropdown" v-show="active">
+								<li v-for="color in colors" @click="setColor(color.hex, color.name)">
+						<span :style="{background: color.hex}"></span> {{color.name}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div id="textField" class="tab" type="toolComponent">
+				Text:<br>
+				<input type="general_text" id="textForButtonOrLabel" class="noQuotes">
+				<br>
+			</div>
+			
+			<div id="functionField" class="tab" type="toolComponent">
+				Associated function:<br>
+				<input type="general_text" id="function" class="wFilter">
+				<br>
+			</div>
+			
+			<div id="itemsField" class="tab" type="toolComponent">
+				Name:<br>
+				<input type="general_text" id="listBoxName" class="wFilter">
+				How many items?
+				<input type="number_text" id="numberOfListBoxItems" class="justNums"><input type="button" id="numberOfListBoxItemsButton" value="Create">
+			</div>
+			
+
+			
+
+			
+			<div id="comboBoxField" class="tab" type="toolComponent">
+				Name:<br>
+				<input type="general_text" id="comboBoxName" class="wFilter"><br>
+				<input type="number_text" id="comboBoxWidth" class="justNums"> characters wide, containing <input type="number_text" id="numberOfComboBoxItems" class="justNums"> items <input type="button" id="numberOfComboBoxItemsButton" value="Create">
+			</div>
+			
+			<div id="spinBoxField" class="tab" type="toolComponent">
+				Name:<br>
+				<input type="general_text" id="spinBoxName" class="wFilter"><br>
+				Width in characters: <input type="number_text" id="spinBoxWidth" class="justNums"><br>
+				Values from: <input type="number_text" id="sbMinValue" class="justNums"> to <input type="number_text" id="sbMaxValue" class="justNums">
+			</div>					
+			
+			<div id="fontField" class="tab" type="toolComponent">
+				Font style and size:<br>
+				<select id="chosenFont" class="input" type="fontSelector">
+					<option value="arial" selected ="selected">Arial</option>
+					<option value="courier">Courier</option>
+					<option value="helvetica">Helvetica</option>
+					<option value="verdana">Verdana</option>
+				</select> -- 
+				<select id="chosenStyle" class="input" type="fontSelector">
+					<option value="normal" selected ="selected">Normal</option>
+					<option value="bold">Bold</option>
+					<option value="italic">Italic</option>
+				</select> -- 
+				<input type="number_text" id="fontSize" value="12" class="justNums">pt
+				<br>
+			</div>
+			
+			<div id="progressBarField" class="tab" type="toolComponent">
+				Name:<br>
+				<input type="general_text" id="progressBarName" class="wFilter"><br>
+				Max value of <input type="number_text" class="justNums" id="pbMaxValue" value="100"> in steps of <input type="number_text" id="pbIncrements" value="1" class="justNums">
+			</div>
+			
+			<div id="pictureField" class="tab" type="toolComponent">
+				Name: <input type="general_text" id="pictureName" class="wFilter">
+				<br>Dimensions: <input type="number_text" id="pictureW" value="48" class="justNums">px by <input type="number_text" id="pictureH" value="48" class="justNums">px<br>
+			</div>
+		
+			<div class="tab" type="toolComponent">
+				<br>
+				Snap to grid: <input type="checkbox" id="useAGrid">
+			</div>
+			
+			<div class="tab" type="toolComponent">
+				 <br>
+				<button id="setVals" type="button">Use these values</button>
+			</div>
+
+		</div>
+		<div class="variableItems">
+		
+			<div id="listBoxItems"></div>
+			<div id="comboBoxItems"></div>
+			
+			<div id="buttonsField" class="tab" type="toolComponent">
+				Name: <input type="general_text" id="buttonGroupName" class="wFilter">  Associated variable: <input type="general_text" id="buttonVar" class="wFilter"><br>
+				String or integer variable?
+				<label>
+					<input type="radio" name="RadioSorI" value="String" checked/> String
+				</label>
+				<label>
+					<input type="radio" name="RadioSorI" value="Int" /> Integer 
+				</label><br>
+				Create <input type="number_text" id="numberOfRadioButtons"> buttons stacked 
+				<label>
+					<input type="radio" name="HorV" value="left" /> horizontally
+				</label>
+				<label>
+					<input type="radio" name="HorV" value="top" checked/> vertically
+				</label> <input type="button" id="numberOfRadioButtonsButton" value="Create">
+			</div>
+			
+			<div id="checkField" class="tab" type="toolComponent">
+				Name: <input type="general_text" id="checkBoxName" class="wFilter">  Associated variable: <input type="general_text" id="checkBoxVar" class="wFilter"><br>
+				Text to show: <input type="general_text" id="checkBoxText" class="noQuotes">
+				<br>
+			</div>
+			
+			<div id="radioButtonItems"></div>
+		</div>
+		
+		<div class="row">
+			<div class="column left" id="UIcolumn" style="background-color:#D3D3D3;">
+				<div id="wrapper" > 
+					<div id="blackboardPlaceholder"> 
+						<!-- Canvas Begins -->
+						<canvas id="drawingCanvas" height="600" width="900">
+							<p class="noscript">This browser is not supported, unfortunately. <br />. Supported browsers: <a href="http://www.google.com/chrome">Google Chrome</a>, <a href="http://www.opera.com">Opera</a>, <a href="http://www.mozilla.com">Firefox</a>, <a href="http://www.apple.com/safari">Safari</a>, <br />and <a href="http://www.konqueror.org">Konqueror</a>. Also make sure your JavaScript is enabled.
+							</p>
+						</canvas> 
+						<!-- Canvas Ends -->
+					</div> 
+				</div> 
+			</div>
+			
+			<div class="column right">
+				Code: <input type="button" id="selectAll" value="Copy to clipboard">
+				<br>
+				<div id="full_code" class="codeplace">import tkinter as tk--lb--from tkinter import ttk--lb--from tkinter import * --lb----lb--<div id="function_area"></div>--lb--root = Tk()--lb--<div id="variable_area"></div>--lb--<div id="code_area"></div>root.mainloop()</div>
+				<TEXTAREA id="visible_code" class="codeplace" rows="10" cols="50"></TEXTAREA>
+			</div>
+		</div>
+		<div class="objectHolder" id="objectHolder" style="background-color:#FFF;">
+		</div>
+		<button id="deleteAndRedraw" class="tab">Delete selected objects</button>
+
+
+	</body> 
+</html>

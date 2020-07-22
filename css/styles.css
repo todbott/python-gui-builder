@@ -1,0 +1,171 @@
+@charset "UTF-8"; 
+/* CSS Document */ 
+  
+* { margin:0; 
+	padding:0;
+	box-sizing: border-box;
+	} 
+	
+@media all and (min-width: 960px) {
+* {
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width: 959px) and (min-width: 600px) {
+* {
+    font-size: 5vw;
+  }
+}
+
+@media all and (max-width: 599px) and (min-width: 50px) {
+* {
+    font-size: 6vw;
+  }
+}
+  
+body { 
+  color: #666;
+  font-style: normal;
+  font-size: 2vw;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+
+
+.header {
+  color: #666;
+  font-style: normal;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  padding: 10px;
+  text-align: left;
+  background: #95D3E8;
+  display: table-row;
+}
+
+.toolHeader {
+  color: #666;
+  font-style: normal;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  padding: 10px;
+  text-align: left;
+  background: #D3D3D3;
+  display: table-row;
+}
+
+.variableItems {
+  background: #C1C1C8;
+  color: #666;
+  font-style: normal;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  padding: 10px;
+  margin-right: 5px;
+  text-align: left;
+  background: #D3D3D3;
+  display: table-row;
+}  
+
+.tab { 
+	margin-left: 1px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+	
+
+.column {
+  float: left;
+  padding: 10px;
+  height: 620px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 920px;
+}
+.right {
+  width: 180px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+[type="general_text"]  {
+  width: 150px;
+}
+
+[type="number_text"]  {
+  width: 30px;
+}		
+
+[type="items_text"]  {
+  width: 75px;
+}
+
+[type="button"]  {
+  vertical-align: top;
+}
+
+[type="fontSelector"]  {
+  width: 60px;
+}
+
+[type="toolComponent"]  {
+  float: left;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,1);
+  transition: 0.3s;
+  padding: 12px;
+}
+
+[type="checkbox"] {
+    width: 20px;
+    vertical-align: middle;
+}
+
+textarea {
+  width: 180px;
+  height: 570px;
+}
+
+
+.codeplace {
+  padding: 10px;
+}
+
+
+
+
+
+#objectHolder { display: table; width: 100%; table-layout: fixed; }
+ 
+#wrapper { 
+  position:relative; 
+  width:900px; 
+  height:600px;
+  margin:0 auto; 
+  border-style: solid;
+} 
+  
+<!-- Blackboard -->
+  #blackboardPlaceholder { 
+  width:900px; 
+  height:600px; 
+  margin:0 auto; 
+  cursor:crosshair; 
+
+}
+
+#drawingCanvas { 
+ position:absolute; 
+ border:none; 
+ color:#FFF; 
+ overflow:hidden; 
+ background-color:transparent; 
+
+ } 
+#tempCanvas { position: absolute; width:900px; height:600px; overflow:hidden; }
+
